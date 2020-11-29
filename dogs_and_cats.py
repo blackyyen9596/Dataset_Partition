@@ -38,7 +38,6 @@ for i in classes:
             sample = glob.glob(dirPathPattern)
             switch = False
         sample_number = int(len(sample) * dataset_percent[sets.index(j)])
-        # print(sample_number)
         # 從資料集隨機抽樣
         filePaths = random.sample(sample, sample_number)
         sample = set(sample) - set(filePaths)
@@ -51,4 +50,3 @@ for i in classes:
             dst = os.path.join(class_path, fname)
             shutil.copyfile(src, dst)
         print(i, j, len(os.listdir(class_path)))
-print('finish!')
