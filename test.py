@@ -27,8 +27,8 @@ for i in fileLists:
     for j in classes:
         # 分拆成訓練、驗證與測試資料夾
         switch = True
-        for k in range(len(sets)):
-            set_path = os.path.join(base_dir, sets[k])
+        for k in sets:
+            set_path = os.path.join(base_dir, k)
             if not os.path.isdir(set_path):
                 os.mkdir(set_path)
             class_path = os.path.join(set_path, j)
@@ -38,10 +38,9 @@ for i in fileLists:
             if switch:
                 dirPathPattern = os.path.join(original_dataset_dir, i,
                                               str(j + '\pic' + '*'))
-                print(dirPathPattern)
                 sample = glob.glob(dirPathPattern)
                 switch = False
-            sample_number = int(len(sample) * dataset_percent[k])
+            sample_number = int(len(sample) * dataset_percent[sets.index(k)])
             # print(sample_number)
             # 從資料集隨機抽樣
             filePaths = random.sample(sample, sample_number)
@@ -52,8 +51,7 @@ for i in fileLists:
                 # 讀取文件名稱
                 fname = os.path.basename(filePath)
                 src = os.path.join(original_dataset_dir, i, j, fname)
-                print(src)
                 dst = os.path.join(class_path, fname)
                 shutil.copyfile(src, dst)
-            # print(j, sets[k], len(os.listdir(class_path)))
+            print(j, k, len(os.listdir(class_path)))
 print('finish!')

@@ -12,7 +12,7 @@ test_percent = 0.15
 # 原始資料集所在的路徑
 original_dataset_dir = r'D:\GitHub\t108318156\Classification\train'
 # 用來儲存新資料集的位置
-base_dir = r'D:\GitHub\t108318156\Classification\cats_and_dogs_small'
+base_dir = r'D:\GitHub\t108318156\Classification\cats_and_dogs'
 
 val_percent = val_percent / (val_percent + test_percent)
 test_percent = 1
@@ -22,23 +22,22 @@ dataset_percent = [train_percent, val_percent, test_percent]
 if not os.path.isdir(base_dir):
     os.mkdir(base_dir)
 
-for i in range(len(classes)):
+for i in classes:
     # 分拆成訓練、驗證與測試資料夾
     switch = True
-    for j in range(len(sets)):
-        set_path = os.path.join(base_dir, sets[j])
+    for j in sets:
+        set_path = os.path.join(base_dir, j)
         if not os.path.isdir(set_path):
             os.mkdir(set_path)
-        class_path = os.path.join(set_path, classes[i])
+        class_path = os.path.join(set_path, i)
         if not os.path.isdir(class_path):
             os.mkdir(class_path)
         # 查詢單一種類樣本數量
         if switch:
-            dirPathPattern = os.path.join(original_dataset_dir,
-                                          str(classes[i] + '*'))
+            dirPathPattern = os.path.join(original_dataset_dir, str(i + '*'))
             sample = glob.glob(dirPathPattern)
             switch = False
-        sample_number = int(len(sample) * dataset_percent[j])
+        sample_number = int(len(sample) * dataset_percent[sets.index(j)])
         # print(sample_number)
         # 從資料集隨機抽樣
         filePaths = random.sample(sample, sample_number)
@@ -51,5 +50,5 @@ for i in range(len(classes)):
             src = os.path.join(original_dataset_dir, fname)
             dst = os.path.join(class_path, fname)
             shutil.copyfile(src, dst)
-        print(classes[i], sets[j], len(os.listdir(class_path)))
+        print(i, j, len(os.listdir(class_path)))
 print('finish!')
