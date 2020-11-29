@@ -25,24 +25,24 @@ if not os.path.isdir(base_dir):
     os.mkdir(base_dir)
 
 fileLists = os.listdir(original_dataset_dir)
-for i in sets:
+for i in fileLists:
     # 分拆成訓練、驗證與測試資料夾
     switch = True
-    for j in fileLists:
-        set_path = os.path.join(base_dir, i)
+    for j in sets:
+        set_path = os.path.join(base_dir, j)
         if not os.path.isdir(set_path):
             os.mkdir(set_path)
-        class_path = os.path.join(set_path, j)
+        class_path = os.path.join(set_path, i)
         if not os.path.isdir(class_path):
             os.mkdir(class_path)
         # 查詢單一種類樣本數量
         if switch:
             # 如果沒有picname，必須視情況把picname更改為其他圖片檔名
-            dirPathPattern = os.path.join(original_dataset_dir, j,
-                                          str(j + '/' + picname + '*'))
+            dirPathPattern = os.path.join(original_dataset_dir, i,
+                                          str(picname + '*'))
             sample = glob.glob(dirPathPattern)
             switch = False
-        sample_number = int(len(sample) * dataset_percent[sets.index(i)])
+        sample_number = int(len(sample) * dataset_percent[sets.index(j)])
         # print(sample_number)
         # 從資料集隨機抽樣
         filePaths = random.sample(sample, sample_number)
@@ -52,7 +52,7 @@ for i in sets:
         for filePath in filePaths:
             # 讀取文件名稱
             fname = os.path.basename(filePath)
-            src = os.path.join(original_dataset_dir, j, fname)
+            src = os.path.join(original_dataset_dir, i, fname)
             dst = os.path.join(class_path, fname)
             shutil.copyfile(src, dst)
         print(i, j, len(os.listdir(class_path)))
