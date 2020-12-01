@@ -1,14 +1,14 @@
 import os, shutil, glob, random
 # 定義資料集名稱
-sets = ['train', 'validation', 'test']
+sets = ['train', 'val', 'test']
 # 訓練集佔整體資料集比例
-train_percent = 0.7
+train_percent = 0.75
 # 驗證集佔整體資料集比例
-val_percent = 0.15
+val_percent = 0.125
 # 測試集佔整體資料集比例
-test_percent = 0.15
+test_percent = 0.125
 # 原始資料集所在的路徑
-original_dataset_dir = r'D:\GitHub\t108318156\Classification\ntut-ml-2020-classification\train\characters-20'
+original_dataset_dir = r'D:\Github\t108318156\Classification\ntut-ml-2020-classification\train_data_augmentation\characters-20'
 # 用來儲存新資料集的位置
 base_dir = r'D:\GitHub\t108318156\Classification\simpsons'
 # 原始資料集相同的圖片名稱
