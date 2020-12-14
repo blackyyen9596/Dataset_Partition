@@ -10,9 +10,9 @@ val_percent = 0.1428571429
 # 測試集佔整體資料集比例
 test_percent = 0.0
 # 原始資料集所在的路徑
-original_dataset_dir = r'D:\Github\BlackyYen\BlackyYen-public\machine_learning\Classification\ntut-ml-2020-classification\simpson_stage2\train'
+original_dataset_dir = r'D:\Github\BlackyYen\BlackyYen-public\machine_learning\Classification\ntut-ml-2020-classification\simpsons\train'
 # 用來儲存新資料集的位置
-base_dir = r'D:\training_dataset\simpson_stage2'
+base_dir = r'D:\training_dataset\simpsons'
 # 原始資料集相同的圖片名稱
 image_name = 'pic'
 
