@@ -11,4 +11,4 @@
 
 ### Reference
 ----------
-1. #### Github: deep-learning-with-python-notebooks @[François Chollet fchollet](https://github.com/fchollet/deep-learning-with-python-notebooks)
+1. #### Github: deep-learning-with-python-notebooks @[François Chollet, fchollet](https://github.com/fchollet/deep-learning-with-python-notebooks)

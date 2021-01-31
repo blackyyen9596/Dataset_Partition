@@ -31,7 +31,7 @@ for i in sets:
         os.mkdir(set_path)
     # 查詢單一種類樣本數量
     if switch:
-        dirPathPattern = os.path.join(original_dataset_dir,'*')
+        dirPathPattern = os.path.join(original_dataset_dir, '*')
         sample = glob.glob(dirPathPattern)
         switch = False
     sample_number = int(len(sample) * dataset_percent[sets.index(i)])
